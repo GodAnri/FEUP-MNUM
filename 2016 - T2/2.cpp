@@ -28,5 +28,7 @@ int main()
 		sums[i] = (h/3)*sum;
 		h /= 2;
 	}
+	err = (sums[2] - sums[1]) / 15;
+	cout << "Error: " << err;
 	return 0;
 }
