@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ double dT(double T, double C)
 
 int main()
 {
+	vector<double> sol_list = { 0,0,0 };
 	cout << "a) EULER:" << endl;
 	double t = 0, C = 1, T = 15, deltaC, deltaT, h = 0.25;
 	for (int i = 0; i < 3; i++)
@@ -28,6 +30,7 @@ int main()
 		T += deltaT;
 		t += h;
 	}
+	sol_list[0] = C;
 	cout << endl;
 	cout << "b) RUNGE KUTTA:" << endl;
 	t = 0;
@@ -52,5 +55,29 @@ int main()
 		T += dT1/6 + dT2/3 + dT3/3 + dT4/6;
 		t += h;
 	}
+	cout << "c) QC and Error on Euler:" << endl;
+	double qc, err;
+	h /= 2;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			deltaC = h * dC(T, C);
+			deltaT = h * dT(T, C);
+			C += deltaC;
+			T += deltaT;
+			t += h;
+		}
+		sol_list[i + 1] = C;
+		h /= 2;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Iteracao " << i << " : " << sol_list[i] << endl;
+	}
+	qc = (sol_list[1] - sol_list[0]) / (sol_list[2] - sol_list[1]);
+	err = abs(sol_list[2] - sol_list[1]);
+	cout << "QC: " << qc << endl;
+	cout << "Epsilon: " << err << endl;
 	return 0;
 }
