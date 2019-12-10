@@ -26,9 +26,12 @@ int main()
 		cout << "T: " << T << endl;
 		deltaC = h * dC(T, C);
 		deltaT = h * dT(T, C);
-		C += deltaC;
-		T += deltaT;
-		t += h;
+		if (i != 2)
+		{
+			C += deltaC;
+			T += deltaT;
+			t += h;
+		}
 	}
 	sol_list[0] = C;
 	cout << endl;
@@ -60,13 +63,19 @@ int main()
 	h /= 2;
 	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < 3; j++)
+		t = 0;
+		C = 1;
+		T = 15;
+		for (int j = 0; j < (0.5/h) + 1; j++)
 		{
 			deltaC = h * dC(T, C);
 			deltaT = h * dT(T, C);
-			C += deltaC;
-			T += deltaT;
-			t += h;
+			if (j != (0.5/h))
+			{
+				C += deltaC;
+				T += deltaT;
+				t += h;
+			}
 		}
 		sol_list[i + 1] = C;
 		h /= 2;
