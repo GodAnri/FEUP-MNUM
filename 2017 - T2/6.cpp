@@ -35,11 +35,11 @@ int main()
 		z1 = (h * z);
 		dz1 = h * dz(t, z);
 		z2 = (h * (z + dz1 / 2));
-		dz2 = (h * (dz(t, z + dz1 / 2)));
+		dz2 = (h * (dz(t + h/2, z + dz1 / 2)));
 		z3 = (h * (z + dz2 / 2));
-		dz3 = (h * (dz(t, z + dz2 / 2)));
+		dz3 = (h * (dz(t + h/2, z + dz2 / 2)));
 		z4 = (h * (z + dz3));
-		dz4 = (h * (dz(t, z + dz3)));
+		dz4 = (h * (dz(t + h, z + dz3)));
 		y += z1 / 6 + z2 / 3 + z3 / 3 + z4 / 6;
 		z += dz1 / 6 + dz2 / 3 + dz3 / 3 + dz4 / 6;
 		t += h;
