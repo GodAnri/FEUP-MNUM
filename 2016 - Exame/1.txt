@@ -1,0 +1,25 @@
+Iterador 1:
+x e i são inteiros, o que significa que não ocorrerão erros de arredondamento
+em cálculos intermédios.
+Possui a desvantagem de limitar a exatidão do resultado, uma vez que limita
+muito a escala de representação.
+
+Iterador 2:
+x e h são floats. Isso permite uma maior exatidão do resultado (devido à maior
+gama de valores representável.
+No entanto, ao somar um float em cada iteração (cumulativamente), os erros de
+arredondamento intermédios vão acumulando, levando a um possível erro acumulado
+no valor final.
+
+Iterador 3:
+x, x0 e h são floats e i é inteiro. Ao multiplicar o passo por um inteiro, o
+erro será muito menor, uma vez que corresponde a apenas uma soma em vez de
+várias somas cumulativas (como no iterador 2).
+Porém, a multiplicação por um float pode dar origem a erros de arredondamento.
+
+Iterador 4:
+Sendo x float e m inteiro, vai ser uma soma de potências de 2, que podem ser
+representadas de forma exata em binário.
+Dependendo, no entanto, do valor inicial (a), as somas sucessivas podem causar
+erros de arredondamento cumulativos (tal como no iterador 2), sendo, portanto,
+o valor inicial a única variável que pode causar alterações no resultado.
