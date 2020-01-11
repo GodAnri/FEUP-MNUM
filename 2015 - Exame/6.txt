@@ -1,0 +1,13 @@
+O método numérico mais vantajoso para a otimização da função representada é o
+método de Levenberg-Marquardt.
+O método consiste numa junção do da quádrica e do do gradiente, através de uma
+proporção lambda (que afeta a influência do gradiente na aproximação),
+decrementando o valor desta enquanto os valores dados pelo método forem
+decrescendo.
+Este método permite que o valor se aproxime mais rapidamente do mínimo quando
+se encontra afastado, mas permite também a deteção de depressões alongadas
+próximas do mínimo (devido à similitude deste método com o da quádrica em
+valores próximos do mínimo).
+(FALTA PONTO 3! Não sei exatamente o que escrever, mas terá a ver com as
+constrições à função - uma vez que esta se encontra restringida dentro de um
+quadrado)
